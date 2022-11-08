@@ -1,2 +1,2 @@
-# GodofWar2
+# God of War 2
 Projeto desenvolvido a partir de um desafio entre amigos, que gerou esse incrível site extenso...
