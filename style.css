@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+main {
+    background-image: url("https://d2ofqe7l47306o.cloudfront.net/games/1920x1080/god-of-war-iii-02-artwork.jpg");
+    background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
+#Fundo {
+display: grid;
+    text-align: center;
+    justify-items: center;
+}
+
+section img:hover {
+    animation-name: Zoom;
+    animation-duration: 10s;
+}
+@keyframes Zoom {
+    from {
+        height:3.5cm;
+    }
+    to {
+        height: 7cm;
+    }
+}
+
+section {
+     width: inherit;
+}
