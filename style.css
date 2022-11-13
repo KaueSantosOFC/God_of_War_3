@@ -37,3 +37,9 @@ section img:hover {
 section {
      width: inherit;
 }
+
+audio {
+    width: 0;
+    height: 0;
+    display: block;
+}
