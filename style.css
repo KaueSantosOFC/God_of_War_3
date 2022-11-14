@@ -43,3 +43,7 @@ audio {
     height: 0;
     display: block;
 }
+
+p {
+    font-size: 1.2rem;
+}
