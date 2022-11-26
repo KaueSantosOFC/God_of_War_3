@@ -7,6 +7,8 @@
     <link href="./style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <title>God of War 3</title>
 </head>
 <body>
@@ -15,6 +17,16 @@
         <div id="Fundo" class="bg-dark bg-gradient text-white" style="--bs-bg-opacity: .8; width:fit-content; margin: auto;">
             <h1 class="mt-4">Detonado - God of War 3</h1>
 <img src="http://www.officialpsds.com/images/thumbs/God-of-War-Chains-of-Olympus---Kratos-psd45869.png" class="img-fluid" alt="..." style="margin-top:25px; margin-bottom: 25px;">
+
+<div class="d-flex">
+<button class="btnPlayAudio btn btn-danger" data-audiourl="./assets/Music.mp3">
+Ativar Musica
+</button>
+
+<button class="btn btn-dark" onclick="stopAll()">
+    Parar Musica
+</button>
+</div>
 
 <section>
     <h2>Gaia, Chefe: Leviathan I</h2>
@@ -5383,12 +5395,52 @@
 <section>
     <h5>Informações tiradas do site: <a href="https://www.gamedetonado.com.br/2015/02/detonado-dicas-god-of-war-3.html">Gamedetonado</a></h5>
 </section>
-
-<audio autoplay controls>
-    <source src="./assets/Music.mp3" type="audio/ogg">
-</audio>
         </div>
     </main>
+    
+    <script>
+        var listaAudios = [];
+
+        $(document).ready(function () {
+            //já que você quer fazer o carregamento antecipado de tudo, pode fazer isso quando 
+            //a página for carregada. Pode ser ruim fazer isso se forem muitos
+            //arquivos e muito grandes.
+
+            $('.btnPlayAudio').each(function (e) {
+                var url = $(this).attr('data-audiourl');
+                var audioPlay = new Audio(url);
+                audioPlay.preload = "auto";
+
+                var audioData = {
+                    'url': $(this).attr('data-audiourl'),
+                    'audioPlayObj': audioPlay
+                };
+
+                listaAudios.push(audioData);
+            });
+        });
+
+        $('.btnPlayAudio').click(function () {
+            var url = $(this).attr('data-audiourl');
+            for (var i = 0; i < listaAudios.length; i++) {
+                if (listaAudios[i].url == url) {
+                    var audio = listaAudios[i].audioPlayObj;
+                    audio.currentTime = 0;
+                    audio.volume = 1;
+                    audio.play();
+                    break;
+                }
+            }
+        });
+
+        function stopAll() {
+            for (var i = 0; i < listaAudios.length; i++) {
+                listaAudios[i].audioPlayObj.pause();
+            }
+        }
+
+    </script>
+    <!--CODIGO TIRADO DO https://pt.stackoverflow.com/questions/365029/botão-para-tocar-audio-dinamicamente-->
 </body>
 </html>
 <!--
