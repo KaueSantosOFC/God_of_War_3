@@ -42,3 +42,7 @@ section {
 p {
     font-size: 1.1rem;
 }
+ul.dropdown-menu.show {
+     transform:none !important;
+     text-align: center;
+}
